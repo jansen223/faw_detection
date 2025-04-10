@@ -19,12 +19,14 @@ function Home({ canvasRef, counts, resetCounts }) {
             <p>{counts.notInfested}</p>
           </div>
         </div>
-        <button onClick={resetCounts} className="reset-button">
-          Reset Counts
-        </button>
-        <button onClick={() => navigate('/summary')} className="view-summary-button">
-          View Summary
-        </button>
+        <div className="options">
+          <button onClick={resetCounts} className="reset-button">
+            Reset Counts
+          </button>
+          <button onClick={() => navigate('/summary')} className="view-summary-button">
+            View Summary
+          </button>
+        </div>
       </div>
       <div className="camera-section">
         <canvas ref={canvasRef} />

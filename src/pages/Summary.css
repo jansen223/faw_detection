@@ -12,6 +12,17 @@
   text-align: center;
 }
 
+.chart-wrapper {
+  width: 100%;     /* or fixed value like 500px */
+  max-width: 600px;
+  height: 400px;
+}
+
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .chart-section h2 {
   font-size: 1.5rem;
   margin-bottom: 20px;
@@ -23,6 +34,7 @@
 }
 
 .summary-section h2 {
+  text-align: center;
   font-size: 1.5rem;
   margin-bottom: 20px;
   color: #004d40; /* Change the color of the header in the summary section */
@@ -42,27 +54,22 @@
 .summary-table th {
   background-color: #0d8b76;
   color: white;
+  font-size: 1.2rem;
 }
 
 .summary-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.summary-table tr:hover {
-  background-color: #ddd;
-}
-
 .back-button {
-  position: absolute; /* Position the button absolutely */
-  bottom: 100px; /* Distance from the bottom of the page */
-  left: 60px; /* Distance from the left of the page */
+  margin: 30px 0 50px 190px;
   padding: 10px 20px;
   background-color: green;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 20px;
   transition: background-color 0.3s ease;
 }
 

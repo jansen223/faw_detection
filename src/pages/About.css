@@ -1,6 +1,8 @@
 .about-container {
   padding: 20px;
   text-align: center;
+  min-height: 500px;
+  height: 100%;
 }
 
 .about-container h2 {
