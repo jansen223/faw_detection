@@ -17,24 +17,13 @@ function SummaryAndPercentages() {
     // Fetch summaries from the backend
     fetch('http://192.168.0.77:5000/get_summaries')
       .then((response) => response.json())
-      .then((data) => {
-        console.log('Summaries (raw):', data); // Debugging
-        const formattedSummaries = data.map((item) => ({
-          id: item[0],
-          timestamp: item[1],
-          infested_count: item[2],
-          not_infested_count: item[3],
-        }));
-        console.log('Summaries (formatted):', formattedSummaries); // Debugging
-        setSummaries(formattedSummaries);
-      })
+      .then((data) => setSummaries(data))
       .catch((error) => console.error('Error fetching summaries:', error));
 
     // Fetch percentages from the backend
     fetch('http://192.168.0.77:5000/get_percentages')
       .then((response) => response.json())
       .then((data) => {
-        console.log('Percentages:', data); // Debugging
         setPercentages({
           infested: data.infested_percentage || 0,
           notInfested: data.not_infested_percentage || 0,
@@ -83,17 +72,10 @@ function SummaryAndPercentages() {
 
   return (
     <div className="summary-and-percentages-container">
-      {/* Percentages Section */}
       <div className="chart-section">
         <h2>PERCENTAGES</h2>
-        {percentages.infested + percentages.notInfested > 0 ? (
-          <Pie data={data} options={options} />
-        ) : (
-          <p>No data available to display the chart.</p>
-        )}
+        <Pie data={data} options={options} />
       </div>
-
-      {/* Summary Section */}
       <div className="summary-section">
         <h2>SUMMARY</h2>
         <table className="summary-table">
@@ -121,8 +103,6 @@ function SummaryAndPercentages() {
           </tbody>
         </table>
       </div>
-
-      {/* Back Button */}
       <button onClick={() => navigate('/')} className="back-button">
         Back to Home
       </button>

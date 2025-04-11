@@ -9,11 +9,9 @@ from datetime import datetime
 import sqlite3
 import base64
 import hashlib
-from flask_cors import CORS
 
 # Initialize Flask app and SocketIO
 app = Flask(__name__)
-CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Load YOLOv8 model

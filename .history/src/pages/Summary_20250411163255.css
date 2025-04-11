@@ -1,10 +1,10 @@
 .summary-and-percentages-container {
   display: flex;
   flex-direction: row; /* Arrange items horizontally */
-  justify-content: center; /* Add space between the chart and summary */
+  justify-content: space-between; /* Add space between the chart and summary */
   align-items: flex-start; /* Align items at the top */
   padding: 20px;
-  gap: 80px; /* Add spacing between the chart and summary */
+  gap: 200px; /* Add spacing between the chart and summary */
 }
 
 .chart-section {
@@ -14,7 +14,7 @@
   flex-direction: column; /* Align content vertically */
   align-items: center; /* Center horizontally */
   justify-content: center; /* Center vertically */
-  min-height: 400px; /* Ensure enough height for the pie chart */
+  height: 400px; /* Ensure enough height for the pie chart */
 }
 
 .chart-section h2 {
@@ -42,20 +42,17 @@
 .summary-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px; /* Add spacing above the table */
 }
 
 .summary-table th, .summary-table td {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
-  font-size: 1rem; /* Ensure consistent font size */
 }
 
 .summary-table th {
   background-color: #0d8b76;
   color: white;
-  font-weight: bold; /* Make header text bold */
 }
 
 .summary-table tr:nth-child(even) {
@@ -67,8 +64,9 @@
 }
 
 .back-button {
-  bottom: 20px; /* Distance from the bottom of the container */
-  left: 20px; /* Distance from the left of the container */
+  position: absolute; /* Position the button absolutely */
+  bottom: 100px; /* Distance from the bottom of the page */
+  left: 60px; /* Distance from the left of the page */
   padding: 10px 20px;
   background-color: green;
   color: white;

@@ -48,7 +48,8 @@ function SummaryAndPercentages() {
     labels: ['Infested', 'Not Infested'],
     datasets: [
       {
-        data: [percentages.infested || 0, percentages.notInfested || 0],
+        //data: [percentages.infested || 0, percentages.notInfested || 0],
+        data: [40, 60],
         backgroundColor: ['#ffcccb', '#c8e6c9'],
         borderColor: ['#b71c1c', '#1b5e20'],
         borderWidth: 1,

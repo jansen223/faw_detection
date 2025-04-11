@@ -83,7 +83,6 @@ function SummaryAndPercentages() {
 
   return (
     <div className="summary-and-percentages-container">
-      {/* Percentages Section */}
       <div className="chart-section">
         <h2>PERCENTAGES</h2>
         {percentages.infested + percentages.notInfested > 0 ? (
@@ -92,8 +91,6 @@ function SummaryAndPercentages() {
           <p>No data available to display the chart.</p>
         )}
       </div>
-
-      {/* Summary Section */}
       <div className="summary-section">
         <h2>SUMMARY</h2>
         <table className="summary-table">
@@ -121,8 +118,6 @@ function SummaryAndPercentages() {
           </tbody>
         </table>
       </div>
-
-      {/* Back Button */}
       <button onClick={() => navigate('/')} className="back-button">
         Back to Home
       </button>

@@ -1,10 +1,10 @@
 .summary-and-percentages-container {
   display: flex;
   flex-direction: row; /* Arrange items horizontally */
-  justify-content: center; /* Add space between the chart and summary */
+  justify-content: space-between; /* Add space between the chart and summary */
   align-items: flex-start; /* Align items at the top */
   padding: 20px;
-  gap: 80px; /* Add spacing between the chart and summary */
+  gap: 20px; /* Add spacing between the chart and summary */
 }
 
 .chart-section {
@@ -67,8 +67,7 @@
 }
 
 .back-button {
-  bottom: 20px; /* Distance from the bottom of the container */
-  left: 20px; /* Distance from the left of the container */
+  margin-top: 20px;
   padding: 10px 20px;
   background-color: green;
   color: white;

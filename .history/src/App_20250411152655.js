@@ -48,7 +48,7 @@ function App() {
 
   const resetCounts = async () => {
     try {
-      const response = await fetch('http://192.168.0.77:5000/reset_counts', {
+      const response = await fetch('http:// 192.168.0.77:5000/reset_counts', {
         method: 'POST',
       });
       const data = await response.json();

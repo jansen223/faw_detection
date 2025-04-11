@@ -18,15 +18,8 @@ function SummaryAndPercentages() {
     fetch('http://192.168.0.77:5000/get_summaries')
       .then((response) => response.json())
       .then((data) => {
-        console.log('Summaries (raw):', data); // Debugging
-        const formattedSummaries = data.map((item) => ({
-          id: item[0],
-          timestamp: item[1],
-          infested_count: item[2],
-          not_infested_count: item[3],
-        }));
-        console.log('Summaries (formatted):', formattedSummaries); // Debugging
-        setSummaries(formattedSummaries);
+        console.log('Summaries:', data); // Debugging
+        setSummaries(data);
       })
       .catch((error) => console.error('Error fetching summaries:', error));
 
@@ -83,7 +76,6 @@ function SummaryAndPercentages() {
 
   return (
     <div className="summary-and-percentages-container">
-      {/* Percentages Section */}
       <div className="chart-section">
         <h2>PERCENTAGES</h2>
         {percentages.infested + percentages.notInfested > 0 ? (
@@ -92,8 +84,6 @@ function SummaryAndPercentages() {
           <p>No data available to display the chart.</p>
         )}
       </div>
-
-      {/* Summary Section */}
       <div className="summary-section">
         <h2>SUMMARY</h2>
         <table className="summary-table">
@@ -121,8 +111,6 @@ function SummaryAndPercentages() {
           </tbody>
         </table>
       </div>
-
-      {/* Back Button */}
       <button onClick={() => navigate('/')} className="back-button">
         Back to Home
       </button>
