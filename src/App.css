@@ -9,12 +9,9 @@ body {
 }
 
 .App {
-  text-align: center;
   background-color: #f0f0f0;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .App-header {
@@ -29,6 +26,11 @@ body {
   width: 100%;
   margin: 0;
   box-sizing: border-box;
+}
+
+.App-header h1 {
+  margin: 0;
+  padding: 10px 0 15px 0;
 }
 
 .App-navbar {
@@ -65,9 +67,7 @@ body {
 .App-footer {
   background-color: #004d40;
   color: white;
-  padding: 5px 20px;
   text-align: center;
-  position: fixed;
   bottom: 0;
   width: 100%;
 }

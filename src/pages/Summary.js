@@ -83,17 +83,10 @@ function SummaryAndPercentages() {
 
   return (
     <div className="summary-and-percentages-container">
-      {/* Percentages Section */}
       <div className="chart-section">
-        <h2>PERCENTAGES</h2>
-        {percentages.infested + percentages.notInfested > 0 ? (
-          <Pie data={data} options={options} />
-        ) : (
-          <p>No data available to display the chart.</p>
-        )}
+        <h2>PERCENTAGE</h2>
+        <Pie data={data} options={options} />
       </div>
-
-      {/* Summary Section */}
       <div className="summary-section">
         <h2>SUMMARY</h2>
         <table className="summary-table">
@@ -127,7 +120,7 @@ function SummaryAndPercentages() {
         Back to Home
       </button>
     </div>
-  );
+  );  
 }
 
 export default SummaryAndPercentages;
