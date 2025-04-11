@@ -58,43 +58,47 @@ function SummaryAndPercentages() {
   };
 
   return (
-    <div className="summary-and-percentages-container">
-      <div className="chart-section">
-        <h2>PERCENTAGE</h2>
-        <Pie data={data} options={options} />
-      </div>
-      <div className="summary-section">
-        <h2>SUMMARY</h2>
-        <table className="summary-table">
-          <thead>
-            <tr>
-              <th>Timestamp</th>
-              <th>Infested Count</th>
-              <th>Not Infested Count</th>
-            </tr>
-          </thead>
-          <tbody>
-            {summaries.length > 0 ? (
-              summaries.map((summary) => (
-                <tr key={summary.id}>
-                  <td>{summary.timestamp}</td>
-                  <td>{summary.infested_count}</td>
-                  <td>{summary.not_infested_count}</td>
-                </tr>
-              ))
-            ) : (
+    <div>
+      <div className="summary-and-percentages-container">
+        <div className="chart-section">
+          <h2>PERCENTAGE</h2>
+          <div className="chart-wrapper">
+            <Pie data={data} options={options} />
+          </div>
+        </div>
+        <div className="summary-section">
+          <h2>SUMMARY</h2>
+          <table className="summary-table">
+            <thead>
               <tr>
-                <td colSpan="3">No data available</td>
+                <th>Timestamp</th>
+                <th>Infested Count</th>
+                <th>Not Infested Count</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {summaries.length > 0 ? (
+                summaries.map((summary) => (
+                  <tr key={summary.id}>
+                    <td>{summary.timestamp}</td>
+                    <td>{summary.infested_count}</td>
+                    <td>{summary.not_infested_count}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="3">No data available</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
       <button onClick={() => navigate('/')} className="back-button">
         Back to Home
       </button>
     </div>
-  );
+  );  
 }
 
 export default SummaryAndPercentages;
