@@ -75,7 +75,9 @@
 }
 
 .back-button {
-  margin: 30px 0 50px 190px;
+  position: relative;
+  bottom: 20px;
+  left: 20px;
   padding: 10px 20px;
   background-color: #004d40;
   color: white;

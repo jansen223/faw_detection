@@ -109,13 +109,10 @@ function SummaryAndPercentages() {
            <h2>SUMMARY</h2>
            <table className="summary-table">
              <thead>
-               <tr>
-                 <th>Timestamp</th>
+             <th>Timestamp</th>
                  <th>Infested Count</th>
                  <th>Not Infested Count</th>
-                 <th>Actions</th>
-               </tr>
-             </thead>
+                 </thead>
              <tbody>
                {summaries.length > 0 ? (
                  summaries.map((summary) => (
@@ -123,19 +120,11 @@ function SummaryAndPercentages() {
                      <td>{summary.timestamp}</td>
                      <td>{summary.infested_count}</td>
                      <td>{summary.not_infested_count}</td>
-                     <td>
-                       <button
-                         onClick={() => handleDelete(summary.id)}
-                         className="delete-button"
-                       >
-                         Delete
-                       </button>
-                     </td>
                    </tr>
                  ))
                ) : (
                  <tr>
-                   <td colSpan="4">No data available</td>
+                   <td colSpan="3">No data available</td>
                  </tr>
                )}
              </tbody>

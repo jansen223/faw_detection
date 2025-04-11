@@ -97,57 +97,56 @@ function SummaryAndPercentages() {
   };
 
   return (
-    <div>
-       <div className="summary-and-percentages-container">
-         <div className="chart-section">
-           <h2>PERCENTAGE</h2>
-           <div className="chart-wrapper">
-             <Pie data={data} options={options} />
-           </div>
-         </div>
-         <div className="summary-section">
-           <h2>SUMMARY</h2>
-           <table className="summary-table">
-             <thead>
-               <tr>
-                 <th>Timestamp</th>
-                 <th>Infested Count</th>
-                 <th>Not Infested Count</th>
-                 <th>Actions</th>
-               </tr>
-             </thead>
-             <tbody>
-               {summaries.length > 0 ? (
-                 summaries.map((summary) => (
-                   <tr key={summary.id}>
-                     <td>{summary.timestamp}</td>
-                     <td>{summary.infested_count}</td>
-                     <td>{summary.not_infested_count}</td>
-                     <td>
-                       <button
-                         onClick={() => handleDelete(summary.id)}
-                         className="delete-button"
-                       >
-                         Delete
-                       </button>
-                     </td>
-                   </tr>
-                 ))
-               ) : (
-                 <tr>
-                   <td colSpan="4">No data available</td>
-                 </tr>
-               )}
-             </tbody>
-           </table>
-         </div>
-         </div>
-       <button onClick={() => navigate('/')} className="back-button">
-         Back to Home
-       </button>
-     </div>
-   );  
- }
-      
+    <div className="summary-and-percentages-container">
+      {/* Percentages Section */}
+      <div className="chart-section">
+        <h2>PERCENTAGE</h2>
+        {percentages.infested + percentages.notInfested > 0 ? (
+          <Pie data={data} options={options} />
+        ) : (
+          <p>No data available to display the chart.</p>
+        )}
+      </div>
+      <div className="summary-section">
+        <h2>SUMMARY</h2>
+        <table className="summary-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Infested Count</th>
+              <th>Not Infested Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {summaries.length > 0 ? (
+              summaries.map((summary) => (
+                <tr key={summary.id}>
+                  <td>{summary.timestamp}</td>
+                  <td>{summary.infested_count}</td>
+                  <td>{summary.not_infested_count}</td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(summary.id)}
+                      className="delete-button"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4">No data available</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+      <button onClick={() => navigate('/')} className="back-button">
+        Back to Home
+      </button>
+    </div>
+  );  
+}
 
 export default SummaryAndPercentages;

@@ -109,13 +109,11 @@ function SummaryAndPercentages() {
            <h2>SUMMARY</h2>
            <table className="summary-table">
              <thead>
-               <tr>
-                 <th>Timestamp</th>
+             <th>Timestamp</th>
                  <th>Infested Count</th>
                  <th>Not Infested Count</th>
                  <th>Actions</th>
-               </tr>
-             </thead>
+                 </thead>
              <tbody>
                {summaries.length > 0 ? (
                  summaries.map((summary) => (
