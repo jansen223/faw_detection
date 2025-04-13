@@ -18,13 +18,12 @@
 
 .detection-section h3 {
   font-size: 30px;
-  font-weight: black;
+  font-weight: bold;
   color: #004d40;
   margin-bottom: 20px;
 }
 
 .detection-cards {
-  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

@@ -154,7 +154,7 @@ function SummaryAndPercentages() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="6">No data available in the database.</td>
+                  <td colSpan="6">No data available</td>
                 </tr>
               )}
             </tbody>

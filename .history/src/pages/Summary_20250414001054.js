@@ -15,7 +15,7 @@ function SummaryAndPercentages() {
 
   useEffect(() => {
     // Fetch summaries from the backend
-    fetch('http://192.168.254.113:5000/get_summaries')
+    fetch('http://192.168.254.129:5000/get_summaries')
       .then((response) => response.json())
       .then((data) => {
         console.log('Summaries (raw):', data); // Debugging
@@ -42,7 +42,7 @@ function SummaryAndPercentages() {
 
   useEffect(() => {
     // Fetch percentages from the backend
-    fetch('http://192.168.254.113:5000/get_percentages')
+    fetch('http://192.168.254.129:5000/get_percentages')
       .then((response) => response.json())
       .then((data) => {
         console.log('Percentages:', data); // Debugging
@@ -56,7 +56,7 @@ function SummaryAndPercentages() {
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this summary?')) {
-      fetch(`http://192.168.254.113:5000/delete_summary/${id}`, {
+      fetch(`http://192.168.254.129:5000/delete_summary/${id}`, {
         method: 'DELETE',
       })
         .then((response) => response.json())
@@ -154,7 +154,7 @@ function SummaryAndPercentages() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="6">No data available in the database.</td>
+                  <td colSpan="6">No data available</td>
                 </tr>
               )}
             </tbody>

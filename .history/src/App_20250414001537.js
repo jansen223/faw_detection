@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Team from './pages/Team';
 import Summary from './pages/Summary';
+import UploadAndDetect from './pages/UploadAndDetect';
 import './App.css';
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/team">Team</Link></li>
+            <li><Link to="/upload">Upload</Link></li>
           </ul>
         </nav>
         <Routes>
@@ -79,6 +81,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/team" element={<Team />} />
           <Route path="/summary" element={<Summary />} />
+          <Route path="/upload" element={<UploadAndDetect />} />
         </Routes>
         <footer className="App-footer">
           <p>&copy; 2025 FAW Detection System. All rights reserved.</p>

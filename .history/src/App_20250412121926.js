@@ -13,7 +13,7 @@ function App() {
   const [counts, setCounts] = React.useState({ infested: 0, notInfested: 0 });
 
   useEffect(() => {
-    socketRef.current = io('http://192.168.254.113:5000');
+    socketRef.current = io('http://192.168.254.108:5000');
 
     let lastRenderTime = 0;
     socketRef.current.on('video_frame', (data) => {
@@ -48,7 +48,7 @@ function App() {
 
   const resetCounts = async () => {
     try {
-      const response = await fetch('http://192.168.254.113:5000/reset_counts', {
+      const response = await fetch('http://192.168.254.108:5000/reset_counts', {
         method: 'POST',
       });
       const data = await response.json();

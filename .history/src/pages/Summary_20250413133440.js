@@ -11,28 +11,22 @@ ChartJS.register(ArcElement, Tooltip, ChartDataLabels);
 function SummaryAndPercentages() {
   const [summaries, setSummaries] = useState([]);
   const [percentages, setPercentages] = useState({ infested: 0, notInfested: 0 });
+  const [showPercentages, setShowPercentages] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch summaries from the backend
-    fetch('http://192.168.254.113:5000/get_summaries')
+    fetch('http://192.168.254.129:5000/get_summaries')
       .then((response) => response.json())
       .then((data) => {
         console.log('Summaries (raw):', data); // Debugging
         const formattedSummaries = data
-          .map((item) => {
-            const total = item[2] + item[3]; // Total count (infested + not infested)
-            const infestedPercentage = total > 0 ? ((item[2] / total) * 100).toFixed(2) : 0; // Calculate infested percentage
-            const notInfestedPercentage = total > 0 ? ((item[3] / total) * 100).toFixed(2) : 0; // Calculate not infested percentage
-            return {
-              id: item[0],
-              timestamp: item[1],
-              infested_count: item[2],
-              not_infested_count: item[3],
-              infested_percentage: infestedPercentage,
-              not_infested_percentage: notInfestedPercentage,
-            };
-          })
+          .map((item) => ({
+            id: item[0],
+            timestamp: item[1],
+            infested_count: item[2],
+            not_infested_count: item[3],
+          }))
           .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); // Sort by timestamp (latest first)
         console.log('Summaries (formatted and sorted):', formattedSummaries); // Debugging
         setSummaries(formattedSummaries);
@@ -42,7 +36,7 @@ function SummaryAndPercentages() {
 
   useEffect(() => {
     // Fetch percentages from the backend
-    fetch('http://192.168.254.113:5000/get_percentages')
+    fetch('http://192.168.254.129:5000/get_percentages')
       .then((response) => response.json())
       .then((data) => {
         console.log('Percentages:', data); // Debugging
@@ -56,7 +50,7 @@ function SummaryAndPercentages() {
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this summary?')) {
-      fetch(`http://192.168.254.113:5000/delete_summary/${id}`, {
+      fetch(`http://192.168.254.129:5000/delete_summary/${id}`, {
         method: 'DELETE',
       })
         .then((response) => response.json())
@@ -122,39 +116,51 @@ function SummaryAndPercentages() {
         </div>
         <div className="summary-section">
           <h2>SUMMARY</h2>
+          <button
+            onClick={() => setShowPercentages((prev) => !prev)}
+            className="toggle-percentages-button"
+          >
+            {showPercentages ? 'Hide Percentages' : 'Show Percentages'}
+          </button>
           <table className="summary-table">
             <thead>
               <tr>
                 <th>Timestamp</th>
                 <th>Infested Count</th>
                 <th>Not Infested Count</th>
-                <th>Infested %</th>
-                <th>Not Infested %</th>
+                {showPercentages && <th>Infested %</th>}
+                {showPercentages && <th>Not Infested %</th>}
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {summaries.length > 0 ? (
-                summaries.map((summary) => (
-                  <tr key={summary.id}>
-                    <td>{summary.timestamp}</td>
-                    <td>{summary.infested_count}</td>
-                    <td>{summary.not_infested_count}</td>
-                    <td>{summary.infested_percentage}%</td>
-                    <td>{summary.not_infested_percentage}%</td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(summary.id)}
-                        className="delete-button"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
+                summaries.map((summary) => {
+                  const total = summary.infested_count + summary.not_infested_count;
+                  const infestedPercentage = total > 0 ? ((summary.infested_count / total) * 100).toFixed(2) : 0;
+                  const notInfestedPercentage = total > 0 ? ((summary.not_infested_count / total) * 100).toFixed(2) : 0;
+
+                  return (
+                    <tr key={summary.id}>
+                      <td>{summary.timestamp}</td>
+                      <td>{summary.infested_count}</td>
+                      <td>{summary.not_infested_count}</td>
+                      {showPercentages && <td>{infestedPercentage}%</td>}
+                      {showPercentages && <td>{notInfestedPercentage}%</td>}
+                      <td>
+                        <button
+                          onClick={() => handleDelete(summary.id)}
+                          className="delete-button"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
               ) : (
                 <tr>
-                  <td colSpan="6">No data available in the database.</td>
+                  <td colSpan={showPercentages ? 6 : 4}>No data available</td>
                 </tr>
               )}
             </tbody>
